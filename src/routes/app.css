@@ -1,0 +1,12 @@
+* {
+	margin: 0;
+}
+
+body {
+	--inch-worm: #bbfb69;
+	--purple-heart: #9424e6;
+	font-family: monospace;
+	background-color: var(--inch-worm);
+	color: var(--purple-heart);
+	overflow-x: hidden;
+}
