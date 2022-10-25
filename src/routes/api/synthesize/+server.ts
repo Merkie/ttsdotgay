@@ -32,3 +32,21 @@ export const POST: RequestHandler = async ({ request }) => {
 	response.headers.append('Access-Control-Allow-Origin', '*');
 	return response;
 };
+
+export const OPTIONS: RequestHandler = async () => {
+	const response = new Response(null, {
+		status: 200
+	});
+	response.headers.append('Access-Control-Allow-Origin', '*');
+	response.headers.append('Access-Control-Allow-Methods', 'POST, OPTIONS');
+	response.headers.append('Access-Control-Allow-Headers', 'Content-Type');
+	return response;
+};
+
+export const GET: RequestHandler = async () => {
+	const response = new Response(null, {
+		status: 200
+	});
+	response.headers.append('Access-Control-Allow-Origin', '*');
+	return response;
+};
