@@ -3,8 +3,8 @@ import GoogleTTS from '$lib/Google';
 import AwsTTS from '$lib/AWS';
 import type { RequestHandler } from './$types';
 
-export const POST: RequestHandler = async ({ request }) => {
-	const { provider, text, voice, name } = await request.json();
+export const GET: RequestHandler = async ({ request }) => {
+	const { provider, text, voice, name } = JSON.parse(request.headers.get('input') + '');
 	let response;
 	// synthesize based on provider
 	if (provider === 'azure') {
@@ -29,24 +29,6 @@ export const POST: RequestHandler = async ({ request }) => {
 		response = new Response('No valid provider specified', { status: 400 });
 	}
 
-	response.headers.append('Access-Control-Allow-Origin', '*');
-	return response;
-};
-
-export const OPTIONS: RequestHandler = async () => {
-	const response = new Response(null, {
-		status: 200
-	});
-	response.headers.append('Access-Control-Allow-Origin', '*');
-	response.headers.append('Access-Control-Allow-Methods', 'POST, OPTIONS');
-	response.headers.append('Access-Control-Allow-Headers', 'Content-Type');
-	return response;
-};
-
-export const GET: RequestHandler = async () => {
-	const response = new Response(null, {
-		status: 200
-	});
 	response.headers.append('Access-Control-Allow-Origin', '*');
 	return response;
 };
