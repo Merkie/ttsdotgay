@@ -18,18 +18,16 @@ export const POST: RequestHandler = async ({ request }) => {
 				status: 200
 			});
 		}
-	}
-	if (provider === 'google') {
+	} else if (provider === 'google') {
 		response = new Response(await GoogleTTS(text, voice.languageCode, voice.ssmlGender), {
 			status: 200
 		});
-	}
-	if (provider === 'aws') {
+	} else if (provider === 'aws') {
 		response = new Response(await AwsTTS(text, voice.voice, voice.engine), { status: 200 });
+	} else {
+		// response = error if provider is not supported
+		response = new Response('No valid provider specified', { status: 400 });
 	}
-
-	// response = error if provider is not supported
-	response = new Response('No valid provider specified', { status: 400 });
 
 	response.headers.append('Access-Control-Allow-Origin', '*');
 	return response;
