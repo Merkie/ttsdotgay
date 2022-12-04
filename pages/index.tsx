@@ -35,7 +35,7 @@ function Page({
 
   const synthesize = async () => {
     setLoading(true);
-    const res = await fetch(process.env.HOST + "/api/v1/synthesize", {
+    const res = await fetch(`/api/v1/synthesize`, {
       method: "POST",
       body: JSON.stringify({
         id: idInput.current?.value,
