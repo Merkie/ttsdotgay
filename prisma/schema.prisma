@@ -1,0 +1,23 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Voice {
+  id           Int      @id @unique @default(autoincrement())
+  providerId   String   @unique // name | Id | privShortName 
+  provider     String // AWS | Azure | GCP
+  gender       String // MALE | FEMALE | NEUTRAL
+  languageCode String // en-US | de-CH | ...
+  name         String // Ethan | Olivia | ...
+  variants     String[] // Angry | Happy | ...
+  useCount     Int      @default(0)
+  reference    Json // Original voice object
+}
