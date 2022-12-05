@@ -3,6 +3,7 @@ import { list as listAWS } from "../../../lib/AWS";
 import { list as listAzure } from "../../../lib/Azure";
 import { list as listGCP } from "../../../lib/Google";
 import prisma from "../../../lib/prisma";
+import NextCors from "nextjs-cors";
 
 type Data = {
   success: boolean;
@@ -18,6 +19,11 @@ export default async function handler(
   // checks to see if any new voices from the providers have been added.
   // This can be an authorized or closed route but for now it is open
   // because it is not a security risk.
+  await NextCors(req, res, {
+    methods: ["GET"],
+    origin: "*",
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  });
 
   // Get all the voices from all the voice providers
   const awsVoices = await listAWS();

@@ -15,6 +15,7 @@ specifiers:
   eslint-config-next: 13.0.6
   microsoft-cognitiveservices-speech-sdk: ^1.24.1
   next: 13.0.6
+  nextjs-cors: ^2.1.2
   postcss: ^8.4.19
   prisma: ^4.7.1
   react: 18.2.0
@@ -40,6 +41,7 @@ dependencies:
   eslint-config-next: 13.0.6_hsf322ms6xhhd4b5ne6lb74y4a
   microsoft-cognitiveservices-speech-sdk: 1.24.1_asn1.js@5.4.1
   next: 13.0.6_biqbaboplfbrettd7655fr4n2y
+  nextjs-cors: 2.1.2_next@13.0.6
   prisma: 4.7.1
   react: 18.2.0
   react-data-table-component: 7.5.3_56nicwxcbpehznvjhlpvpy75bu
@@ -1103,6 +1105,14 @@ packages:
   /core-js-pure/3.26.1:
     resolution: {integrity: sha512-VVXcDpp/xJ21KdULRq/lXdLzQAtX7+37LzpyfFM973il0tWSsDEoyzG38G14AjTpK9VTfiNM9jnFauq/CpaWGQ==}
     requiresBuild: true
+    dev: false
+
+  /cors/2.8.5:
+    resolution: {integrity: sha512-KIHbLJqu73RGr/hnbrO9uBeixNGuvSQjul/jdFvS/KFSIH1hWVd1ng7zOHx+YrEfInLG7q4n6GHQ9cDtxv/P6g==}
+    engines: {node: '>= 0.10'}
+    dependencies:
+      object-assign: 4.1.1
+      vary: 1.1.2
     dev: false
 
   /cross-spawn/7.0.3:
@@ -2640,6 +2650,15 @@ packages:
       - babel-plugin-macros
     dev: false
 
+  /nextjs-cors/2.1.2_next@13.0.6:
+    resolution: {integrity: sha512-2yOVivaaf2ILe4f/qY32hnj3oC77VCOsUQJQfhVMGsXE/YMEWUY2zy78sH9FKUCM7eG42/l3pDofIzMD781XGA==}
+    peerDependencies:
+      next: ^8.1.1-canary.54 || ^9.0.0 || ^10.0.0-0 || ^11.0.0 || ^12.0.0 || ^13.0.0
+    dependencies:
+      cors: 2.8.5
+      next: 13.0.6_biqbaboplfbrettd7655fr4n2y
+    dev: false
+
   /node-fetch/2.6.7:
     resolution: {integrity: sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==}
     engines: {node: 4.x || >=6.0.0}
@@ -3575,6 +3594,11 @@ packages:
   /uuid/8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
     hasBin: true
+    dev: false
+
+  /vary/1.1.2:
+    resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
+    engines: {node: '>= 0.8'}
     dev: false
 
   /webidl-conversions/3.0.1:

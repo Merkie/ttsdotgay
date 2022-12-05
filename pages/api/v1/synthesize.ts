@@ -3,6 +3,7 @@ import { synthesize as synthesizeAWS } from "../../../lib/AWS";
 import { synthesize as synthesizeAzure } from "../../../lib/Azure";
 import { synthesize as synthesizeGCP } from "../../../lib/Google";
 import prisma from "../../../lib/prisma";
+import NextCors from "nextjs-cors";
 
 type Data = {
   success: boolean;
@@ -34,6 +35,12 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
+  await NextCors(req, res, {
+    methods: ["POST"],
+    origin: "*",
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  });
+
   // This route is post only
   if (req.method !== "POST") {
     res.status(405).json({ success: false, message: "Method not allowed" });
