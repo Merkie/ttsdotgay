@@ -36,7 +36,7 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   await NextCors(req, res, {
-    methods: ["POST"],
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
     origin: "*",
     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
   });
